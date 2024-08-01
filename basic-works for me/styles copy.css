@@ -1,0 +1,194 @@
+body {
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: #f4f4f4;
+}
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+}
+
+/* white outline around choose focus */
+.custom-dropdown input {
+    width: 90%;
+    padding: 6px;
+    box-sizing: border-box;
+    /* border-radius: 10px; */
+    background-color: #F98D4E;
+    color: white;
+    /* border: 1px solid white; */
+    font-size: 15px;
+}
+
+/* category text name */
+#category-input::placeholder {
+    color: white; /* Change to the desired lighter grey color */
+    font-size: 15px;
+}
+
+.dropdown-list {
+    display: none;
+    position: absolute;
+    background-color: #2D3645;
+    color: white;
+    border-radius: 10px;
+    margin-top: 5px;
+    width: 90%;
+    z-index: 1;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: left;
+}
+
+.dropdown-item:hover {
+    /* background-color: rgb(238, 81, 81); */
+    background-color: #F98D4E;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F98D4E;
+    padding: 5px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    color: white;
+    /* color: rgb(238, 81, 81); */
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 5 10px;
+}
+
+.container {
+    padding: 20px;
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+    background-color: #F98D4E;
+}
+
+.timer {
+    margin-top: 20px;
+    font-size: 11em;
+    margin-bottom: 20px;
+    text-shadow: 
+        -2px -2px 0 #fff,  
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff;
+}
+
+form {
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 15px;
+}
+
+select, input {
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    background-color: #F98D4E;
+    color: white;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.button {
+    margin-bottom: 110px;
+}
+
+button {
+    text-align: center;
+    font-size: 15px;
+    padding: 6px;
+    margin: 5px 0;
+    width: 55px;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 10px;
+    border-style: solid;
+    color: white;
+    background-color: #F98D4E;
+    cursor: pointer;
+}
+
+#start-button {
+    margin-left: 10px;
+}
+
+#duration {
+    width: 50px;
+    margin-right: 0px;
+    font-size: 15px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+#progress-bars h2 {
+    margin-bottom: 30px;
+}
+
+#pomodoro-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+#pomodoro-list li {
+    margin: 5px 0;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.progress-bar label {
+    flex: 1;
+    text-align: right; /* Align text content of labels to the right */
+    margin-right: 10px;
+}
+
+progress {
+    flex: 3;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    margin-left: 10px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: white;
+    border-radius: 5px;
+    width: 66%;
+    border: 1px solid white;
+}
+
+progress::-webkit-progress-value {
+    background-color: orange;
+    border-radius: 5px;
+}
+
+.progress-bar + .progress-bar {
+    margin-top: 20px;
+}

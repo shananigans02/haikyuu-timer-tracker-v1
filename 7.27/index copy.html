@@ -1,0 +1,73 @@
+<html lang="en">
+<!-- metadata for the browser -->
+<head>
+    <!-- turn chars into format computer can understand -> display correctly-->
+    <meta charset="UTF-8">
+    <!-- display size of 1.0 means displayed at natural size -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pomodoro productivity tracker</title>
+    <!-- stylesheet means the refed has css style -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" class="nav-link">tracker</a>
+        <a href="progress.html" class="nav-link">stats</a>
+    </nav>
+
+    <div id="content" class="container">
+        <div class="timer">
+            <div id="timer-display"></div>
+        </div>
+
+        <form id="pomodoro-form">
+            <div class="custom-dropdown">
+                <input type="text" id="category-input" placeholder="" autocomplete="off">
+                <div id="dropdown-list" class="dropdown-list">
+                </div>
+            </div>
+            
+            <input type="number" id="duration" min="0" max="60" value="">
+            <label for="duration">mins </label>
+            
+            <button type="button" id="start-button">start</button>
+            <button type="button" id="stop-button">stop</button>
+        </form>
+
+        <!-- id is unique, class can be used on mutiple elements -->
+        <div id="completed-pomodoros">
+            <h2>sets</h2>
+            <!-- unordered bullet point list of items. children of ul are <li> list items -->
+            <ul id="pomodoro-list"></ul>
+        </div>
+    </div>
+
+    <audio id="alarm-sound-oikawa" src="Oikawa yahoo.mp3"></audio>
+    <audio id="alarm-sound-oya" src="Oya Oya.mp3"></audio>
+    <audio id="alarm-sound-s2-commercial" src="haikyuu commercial break soft melody (ringtone).mp3"></audio>
+
+    <!-- <script>
+        function navigate(page) {
+            fetch(page)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('content').innerHTML = html;
+                    // THIS FEELS INCORRECT!!!!!!!
+                    if(page !== 'progress.html') {
+                        loadTimerState();
+                        if (isRunning) {
+                            resumeTimer(); 
+                        }
+                    } else {
+                        generateProgressBars();
+                    }
+                });
+        }
+    </script> -->
+
+    <script src="script.js"></script>
+        
+</body>
+</html>
+ 
