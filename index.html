@@ -19,16 +19,21 @@
         </div>
 
         <form id="pomodoro-form">
-            <div class="custom-dropdown">
-                <input type="text" id="category-input" name="category" placeholder="working on..." autocomplete="off">
-                <div id="dropdown-list" class="dropdown-list"></div>
+            <div class="input-wrapper">
+                <div class="custom-dropdown">
+                    <input type="text" id="category-input" name="category" placeholder="working on..." autocomplete="off">
+                    <div id="dropdown-list" class="dropdown-list"></div>
+                </div>
+            
+                <input type="number" id="duration" name="duration" min="0" max="1440" value="30">
+                <label for="duration"> mins </label>
             </div>
-        
-            <input type="number" id="duration" name="duration" min="0" max="1440" value="30">
-            <label for="duration">mins </label>
-        
-            <button type="button" id="start-button">start</button>
-            <button type="button" id="stop-button">stop</button>
+            
+            <div class="button-wrapper">
+                <button type="button" id="start-button">start</button>
+                <button type="button" id="stop-button">stop</button>
+            </div>
+            
         </form>
 
         <div id="completed-pomodoros">

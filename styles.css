@@ -6,10 +6,31 @@ body {
     background-color: #f4f4f4;
 }
 
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    height: 24.5px; 
+}
+
+.button-wrapper {
+    display: flex;
+    margin-left: 0;
+}
+
 .custom-dropdown {
     position: relative;
     display: inline-block;
-    width: 150px;
+    width: 180px;
 }
 
 /* white outline around choose focus */
@@ -17,10 +38,8 @@ body {
     width: 90%;
     padding: 6px;
     box-sizing: border-box;
-    /* border-radius: 10px; */
     background-color: #F98D4E;
     color: white;
-    /* border: 1px solid white; */
     font-size: 15px;
 }
 
@@ -28,6 +47,11 @@ body {
 #category-input::placeholder {
     color: white; 
     font-size: 15px;
+}
+
+#category-input {
+    margin-right: 10px; 
+    height: 25px;
 }
 
 .dropdown-list {
@@ -79,7 +103,7 @@ nav {
 
 .timer {
     margin-top: 20px;
-    font-size: 11em;
+    font-size: 11.5em;
     margin-bottom: 20px;
     text-shadow: 
         -2px -2px 0 #fff,  
@@ -88,13 +112,11 @@ nav {
          2px  2px 0 #fff;
 }
 
-form {
-    flex-direction: column;
-    align-items: center;
-}
-
 label {
+    margin-right: 10px;
     font-size: 15px;
+    height: 36px; 
+    line-height: 36px;
 }
 
 select, input {
@@ -117,8 +139,8 @@ button {
     text-align: center;
     font-size: 15px;
     padding: 6px;
-    margin: 5px 0;
-    width: 55px;
+    width: 54px;
+    height: 36.5px; 
     border-width: 1px;
     border-color: white;
     border-radius: 10px;
@@ -126,6 +148,12 @@ button {
     color: white;
     background-color: #F98D4E;
     cursor: pointer;
+    margin-left: 5px; 
+}
+
+/* Specific style to remove the margin for the first button */
+.button-wrapper button:first-child {
+    margin-left: 0;
 }
 
 #start-button {
@@ -133,9 +161,11 @@ button {
 }
 
 #duration {
-    width: 50px;
-    margin-right: 0px;
+    width: 40px;
+    margin-right: 20px;
     font-size: 15px;
+    height: 15px; 
+    /* line-height: 1px; */
 }
 
 h2 {
