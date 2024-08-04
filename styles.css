@@ -26,7 +26,7 @@ body {
 
 /* category text name */
 #category-input::placeholder {
-    color: white; /* Change to the desired lighter grey color */
+    color: white; 
     font-size: 15px;
 }
 
@@ -49,7 +49,6 @@ body {
 }
 
 .dropdown-item:hover {
-    /* background-color: rgb(238, 81, 81); */
     background-color: #F98D4E;
 }
 
@@ -64,7 +63,6 @@ nav {
 
 .nav-link {
     color: white;
-    /* color: rgb(238, 81, 81); */
     text-decoration: none;
     font-size: 1.2em;
     padding: 5 10px;
@@ -175,23 +173,23 @@ h2 {
     -webkit-appearance: none;
     appearance: none;
     height: 20px;
-    margin: 0 10px; /* Adjust margins for better spacing */
+    margin: 0 10px; 
 }
 
 .progress-bar .total-duration,
 .progress-bar .goal-duration,
 .progress-bar .percentage-completed {
     margin-left: 10px;
-    white-space: nowrap; /* Ensure no line breaks */
+    white-space: nowrap; 
 }
 
 .progress-bar .goal-duration {
-    margin-left: 10px; /* Add margin to separate goal duration input */
+    margin-left: 10px; 
 }
 
 input.goal-duration {
-    width: 80px; /* Adjust width of input to fit better */
-    text-align: right; /* Align text to the right for consistency */
+    width: 80px; 
+    text-align: right; 
 }
 
 progress::-webkit-progress-bar {
@@ -223,7 +221,7 @@ progress::-webkit-progress-value {
     padding: 0; 
     width: 18px;
     height: 18px;
-    -webkit-appearance: none; /* Remove default checkbox styling */
+    -webkit-appearance: none; 
     appearance: none;
     background-color: white;
     border: 2px solid #F98D4E;

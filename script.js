@@ -83,14 +83,6 @@ dropdownList.addEventListener('click', function (e) {
     }
 });
 
-// default first time inputs
-// if (pomodoroList.length === 0) {
-//     document.getElementById('timer-display').textContent = "30:00";
-//     document.getElementById('category-input').placeholder = "working on....";
-//     document.getElementById('duration').value = 30;
-// }  
-
-
 // update timer display in the style of mm:ss
 function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -105,8 +97,8 @@ function startTimer() {
         // make sure inputs are not empty
         duration = parseInt(durationInput.value);
         const category = categoryInput.value.trim();
-        if (isNaN(duration) || duration < 0 || duration > 60) {
-            alert('pls enter a duration b/w 1 and 60 mins ~');
+        if (isNaN(duration) || duration < 0 || duration > 1440) {
+            alert('pls enter a duration b/w 1 min & 24 hrs ~');
             return;
         }
         if (!category) {
@@ -123,21 +115,18 @@ function startTimer() {
         durationInput.disabled = true;
         categoryInput.disabled = true;
         startButton.textContent = 'pause';
-        startTime = Date.now();
-
-        // console.log("start time:" startTime);
-        
+        startTime = new Date();
 
         // start interval that executes arrow fn every 1000 millisec (1 sec)
         timer = setInterval(() => {
-            const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-            timeLeft = Math.max(0, duration * 60 - elapsedTime);
-            console.log("elasped time", elapsedTime);
+            timeLeft--;
             updateTimerDisplay();
 
             if (timeLeft <= 0) {
                 // built-in js fn. stops the interval timer
                 clearInterval(timer);
+
+                 // add alert sound here
                 alarmSound.play();
                 startButton.textContent = 'start';
 
@@ -213,11 +202,11 @@ function logPomodoro(duration) {
         timestamp
     };
     
-    // console.log("Logging pomodoro rn:", pomodoro);
+    console.log("Logging pomodoro:", pomodoro);
     // storing pomodoro in the array
     pomodoroList.push(pomodoro);
     localStorage.setItem('pomodoroList', JSON.stringify(pomodoroList));
-    // console.log("pomodoro list after logging new one:", pomodoroList);
+    console.log("pomodoro list after loggin:", pomodoroList);
     updatePomodoroList();
 
 }
@@ -251,6 +240,7 @@ function updatePomodoroList() {
         checkbox.dataset.timestamp = pomodoro.timestamp;
         checkbox.checked = true;
         checkbox.id = 'checkbox';
+
         checkbox.addEventListener('change', function () {
             if (!this.checked) {
                 deletePomodoro(pomodoro.timestamp);
@@ -269,7 +259,7 @@ function updatePomodoroList() {
         pomodoroListElement.appendChild(listItem);
     });
 
-    // console.log("Updated pomodoro list:", pomodoroListElement.innerHTML);
+    console.log("Updated pomodoro list:", pomodoroListElement.innerHTML);
 }
 
 // call startimer function
