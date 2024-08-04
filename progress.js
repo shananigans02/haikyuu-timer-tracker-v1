@@ -4,6 +4,16 @@
 const pomodoroList = JSON.parse(localStorage.getItem('pomodoroList')) || [];
 console.log("Pomo list in progress from local storage:", pomodoroList);
 
+
+// warning for stats pg while timer is running
+function navigateToTracker() {
+        window.location.href = "index.html";
+}
+
+const trackerButton = document.getElementById("tracker-button")
+trackerButton.addEventListener("click", navigateToTracker);
+
+
 function generateProgressBars() {
     const progressContainer = document.getElementById('progress-bars');
     progressContainer.innerHTML = ''; // Clear existing content

@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- metadata for the browser -->
 <head>
-    <!-- turn chars into format computer can understand -> display correctly-->
     <meta charset="UTF-8">
-    <!-- display size of 1.0 means displayed at natural size -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pomodoro productivity tracker</title>
-    <!-- stylesheet means the refed has css style -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <nav>
-        <a href="index.html" class="nav-link">tracker</a>
-        <a href="progress.html" class="nav-link">stats</a>
+        <button id="tracker-button" class="nav-link">tracker</button>
+        <button id="stats-button" class="nav-link">stats</button>
     </nav>
 
     <div id="content" class="container">
@@ -34,12 +30,9 @@
             <button type="button" id="start-button">start</button>
             <button type="button" id="stop-button">stop</button>
         </form>
-        
 
-        <!-- id is unique, class can be used on mutiple elements -->
         <div id="completed-pomodoros">
             <h2>sets</h2>
-            <!-- unordered bullet point list of items. children of ul are <li> list items -->
             <ul id="pomodoro-list"></ul>
         </div>
     </div>

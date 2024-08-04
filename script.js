@@ -262,6 +262,23 @@ function updatePomodoroList() {
     console.log("Updated pomodoro list:", pomodoroListElement.innerHTML);
 }
 
+// warning for stats pg while timer is running
+function navigateToStats() {
+    if (isRunning) {
+        const confirmation = confirm("viewing the stats page while the timer is running will RESTART the timer - would you be ok with that?")
+        if (confirmation) {
+            window.location.href = "progress.html";
+        } else {
+            window.location.href = "index.html";
+        }
+    } else {
+        window.location.href = "progress.html";
+    }
+}
+
+const statsButton = document.getElementById("stats-button")
+statsButton.addEventListener("click", navigateToStats);
+
 // call startimer function
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
