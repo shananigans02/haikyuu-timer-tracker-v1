@@ -117,6 +117,8 @@ function startTimer() {
         startButton.textContent = 'pause';
         startTime = new Date();
 
+        console.log("start time:", startTime);
+
         // start interval that executes arrow fn every 1000 millisec (1 sec)
         timer = setInterval(() => {
             timeLeft--;
@@ -179,6 +181,8 @@ function pauseTimer() {
 
 function logPomodoro(duration) {
     const endTime = new Date();
+
+    console.log("end time:", endTime)
 
     // format time. declare as const to 
     const formatTime = (date) => {
