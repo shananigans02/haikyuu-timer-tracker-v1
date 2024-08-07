@@ -186,13 +186,15 @@ function logPomodoro(duration) {
 
     // format time. declare as const to 
     const formatTime = (date) => {
-        const hours = date.getHours();
+        let hours = date.getHours();
         const mins = date.getMinutes();
-        const hourDisplay = 12 || hours % 12;
+        const ampm = hours > 12 ? 'PM': 'AM';
+        
+        hours = hours % 12;
+        hours = hours ? hours : 12;
         const minDisplay = mins < 10 ? '0' + mins : mins;
-        const ampm = hourDisplay > 12 ? 'AM': 'PM';
 
-        return `${hourDisplay}:${minDisplay} ${ampm}`;
+        return `${hours}:${minDisplay} ${ampm}`;
     }
 
     cleanStart = formatTime(startTime);
