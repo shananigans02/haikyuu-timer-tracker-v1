@@ -3,7 +3,7 @@
 // declare variables that can be reassigned later
 let timer;
 let isRunning = false;
-let timeLeft = 0; // start w 0 seconds
+let timeLeft = 0;
 let duration;
 let pomodoroList = JSON.parse(localStorage.getItem('pomodoroList')) || [];
 let startTime;
@@ -98,7 +98,7 @@ function startTimer() {
         duration = parseInt(durationInput.value);
         const category = categoryInput.value.trim();
         if (isNaN(duration) || duration < 0 || duration > 1440) {
-            alert('pls enter a duration b/w 1 min & 24 hrs ~');
+            alert('pls enter a duration b/w 0 mins & 24 hrs ~');
             return;
         }
         if (!category) {
@@ -117,7 +117,8 @@ function startTimer() {
         startButton.textContent = 'pause';
         startTime = new Date();
 
-        console.log("start time:", startTime);
+        // console.log("start time:", startTime);
+        console.log("pre-timer timeleft:", timeLeft);
 
         // start interval that executes arrow fn every 1000 millisec (1 sec)
         timer = setInterval(() => {
@@ -212,7 +213,7 @@ function logPomodoro(duration) {
     // storing pomodoro in the array
     pomodoroList.push(pomodoro);
     localStorage.setItem('pomodoroList', JSON.stringify(pomodoroList));
-    console.log("pomodoro list after loggin:", pomodoroList);
+    console.log("pomodoro list after logging:", pomodoroList);
     updatePomodoroList();
 
 }
@@ -233,7 +234,6 @@ function deletePomodoro(timestamp) {
 }
 
 function updatePomodoroList() {
-    // sets the <ul> element w/ pomodoro-list id to an empty string
     pomodoroListElement.innerHTML = '';
     pomodoroList.forEach(pomodoro => {
         const listItem = document.createElement('li');
@@ -245,7 +245,6 @@ function updatePomodoroList() {
         checkbox.classList.add('pomodoro-checkbox');
         checkbox.dataset.timestamp = pomodoro.timestamp;
         checkbox.checked = true;
-        checkbox.id = 'checkbox';
 
         checkbox.addEventListener('change', function () {
             if (!this.checked) {
@@ -290,3 +289,16 @@ startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
 
 updatePomodoroList();
+
+const setsCheckBox = document.getElementById("sets-checkbox");
+setsCheckBox.addEventListener('change', function () {
+    if (!this.checked) {
+        if (confirm("Do you wantis lo to clear all past sets entries?")) {
+            localStorage.removeItem('pomodoroList');
+            pomodoroList = [];
+            updatePomodoroList(); 
+        } else {
+            this.checked = true;
+        } 
+    }
+});

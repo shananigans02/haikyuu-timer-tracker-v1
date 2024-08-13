@@ -169,7 +169,7 @@ button {
 }
 
 h2 {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 
 #progress-bars h2 {
@@ -278,4 +278,15 @@ progress::-webkit-progress-value {
     align-items: center;
     margin-left: 0; 
     padding: 0px; 
+}
+
+.set-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#sets-checkbox {
+    transform: translateY(11px);
+    margin-right: 6px;
 }
