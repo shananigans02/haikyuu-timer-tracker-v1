@@ -301,28 +301,20 @@ progress::-webkit-progress-value {
 @media (max-width: 768px) {
 
     .container {
-        transform: scale(0.85); /* Scale down the entire container */
+        transform: scale(0.99); /* Scale down the entire container */
         transform-origin: top center; /* Keep the scaling centered at the top */
         width: 100%; /* Ensure container still takes up full width */
     }
 
     nav {
-        transform: scale(0.85); 
+        transform: scale(0.99); 
         transform-origin: top center; 
         width: 100%; 
-        margin: 0;
+        
     }
         
     .timer {
-        font-size: 9.5em;
-    }
-    
-    #stop-button {
-        margin-right: 5px;
-    }
-
-    #input-wrapper {
-        margin-left: 5px;
+        font-size: 6em;
     }
     
 
