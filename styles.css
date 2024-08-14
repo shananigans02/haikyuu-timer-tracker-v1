@@ -3,6 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 10px;
+    padding: 0;
     background-color: #f4f4f4;
 }
 
@@ -24,7 +25,7 @@ form {
 
 .button-wrapper {
     display: flex;
-    margin-left: 0;
+    margin-left: 0px;
     /* width: 100%; */
     /* box-sizing: border-box;
     justify-content: space-between; */
@@ -104,6 +105,7 @@ nav {
     background-color: #F98D4E;
     max-width: 100%;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .timer {
@@ -297,9 +299,31 @@ progress::-webkit-progress-value {
 }
 
 @media (max-width: 768px) {
-    .container, nav {
-        transform: scale(0.75); /* Scale down the entire container */
+
+    .container {
+        transform: scale(0.85); /* Scale down the entire container */
         transform-origin: top center; /* Keep the scaling centered at the top */
         width: 100%; /* Ensure container still takes up full width */
     }
+
+    nav {
+        transform: scale(0.85); 
+        transform-origin: top center; 
+        width: 100%; 
+        margin: 0;
+    }
+        
+    .timer {
+        font-size: 9.5em;
+    }
+    
+    #stop-button {
+        margin-right: 5px;
+    }
+
+    #input-wrapper {
+        margin-left: 5px;
+    }
+    
+
 }
