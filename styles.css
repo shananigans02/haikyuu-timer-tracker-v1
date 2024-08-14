@@ -254,6 +254,14 @@ progress::-webkit-progress-value {
     padding: 0px; 
 }
 
+.input-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+    padding: 0px; 
+}
+
 .pomodoro-checkbox {
     margin: 0 6px 0 0;
     padding: 0; 
@@ -301,9 +309,15 @@ progress::-webkit-progress-value {
 @media (max-width: 768px) {
 
     .container {
-        transform: scale(0.99); /* Scale down the entire container */
-        transform-origin: top center; /* Keep the scaling centered at the top */
-        width: 100%; /* Ensure container still takes up full width */
+        transform: scale(0.99);
+        transform-origin: top center; 
+        width: 100%; 
+    }
+    
+    .input-button-container {
+        transform: scale(0.7); 
+        transform-origin: top center; 
+        width: 100%;
     }
 
     nav {
@@ -318,4 +332,4 @@ progress::-webkit-progress-value {
     }
     
 
-}
+} */
