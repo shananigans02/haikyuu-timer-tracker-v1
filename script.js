@@ -264,6 +264,10 @@ function updatePomodoroList() {
         pomodoroListElement.appendChild(listItem);
     });
 
+    if (pomodoroList.length == 1) {
+        setsCheckBox.checked = true;
+    }
+
     console.log("Updated pomodoro list:", pomodoroListElement.innerHTML);
 }
 
@@ -293,7 +297,7 @@ updatePomodoroList();
 const setsCheckBox = document.getElementById("sets-checkbox");
 setsCheckBox.addEventListener('change', function () {
     if (!this.checked) {
-        if (confirm("Do you wantis lo to clear all past sets entries?")) {
+        if (confirm("clear all past set entries?")) {
             localStorage.removeItem('pomodoroList');
             pomodoroList = [];
             updatePomodoroList(); 

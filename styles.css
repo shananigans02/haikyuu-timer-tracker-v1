@@ -25,6 +25,9 @@ form {
 .button-wrapper {
     display: flex;
     margin-left: 0;
+    /* width: 100%; */
+    /* box-sizing: border-box;
+    justify-content: space-between; */
 }
 
 .custom-dropdown {
@@ -99,6 +102,8 @@ nav {
     text-align: center;
     border-radius: 30px;
     background-color: #F98D4E;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .timer {
@@ -289,4 +294,12 @@ progress::-webkit-progress-value {
 #sets-checkbox {
     transform: translateY(11px);
     margin-right: 6px;
+}
+
+@media (max-width: 768px) {
+    .container, nav {
+        transform: scale(0.75); /* Scale down the entire container */
+        transform-origin: top center; /* Keep the scaling centered at the top */
+        width: 100%; /* Ensure container still takes up full width */
+    }
 }
