@@ -158,13 +158,16 @@ button {
     margin-left: 5px; 
 }
 
-/* Specific style to remove the margin for the first button */
 .button-wrapper button:first-child {
     margin-left: 0;
 }
 
 #start-button {
     margin-left: 10px;
+}
+
+#record-button {
+    display: none;
 }
 
 #duration {
@@ -332,4 +335,4 @@ progress::-webkit-progress-value {
     }
     
 
-} */
+} 

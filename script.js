@@ -1,6 +1,6 @@
 // localStorage.removeItem('pomodoroList');
 
-// declare variables that can be reassigned later
+// declare variables (can be reassigned later)
 let timer;
 let isRunning = false;
 let timeLeft = 0;
@@ -8,27 +8,28 @@ let duration;
 let pomodoroList = JSON.parse(localStorage.getItem('pomodoroList')) || [];
 let startTime;
 
-// declare variables whose value CANNOT be reassigned
+// declare variables (can't be reassigned) 
 const timerDisplay = document.getElementById("timer-display");
 const durationInput = document.getElementById("duration");
 
 const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
+const recordButton = document.getElementById("record-button")
+const statsButton = document.getElementById("stats-button")
 
 const pomodoroListElement = document.getElementById("pomodoro-list")
+const setsCheckBox = document.getElementById("sets-checkbox");
 const alarmSound = document.getElementById("alarm-sound-s2-commercial")
 
-// Add these new event listeners for the custom dropdown
 const categoryInput = document.getElementById("category-input");
 const dropdownList = document.getElementById("dropdown-list");
-
 
 // when categoryInput field gains focus (user clicks on it), dropdown list is displayed
 categoryInput.addEventListener('focus', function () {
     dropdownList.style.display = 'block';
 });
 
- // when user clicks away (loses focus), dropdown list is hidden after a short delay
+// when user clicks away (loses focus), dropdown list is hidden after a short delay
 categoryInput.addEventListener('blur', function () {
     setTimeout(() => {
         dropdownList.style.display = 'none';
@@ -114,10 +115,10 @@ function startTimer() {
         isRunning = true;
         durationInput.disabled = true;
         categoryInput.disabled = true;
+        recordButton.style.display = 'block';
         startButton.textContent = 'pause';
         startTime = new Date();
-
-        // console.log("start time:", startTime);
+        
         console.log("pre-timer timeleft:", timeLeft);
 
         // start interval that executes arrow fn every 1000 millisec (1 sec)
@@ -126,43 +127,50 @@ function startTimer() {
             updateTimerDisplay();
 
             if (timeLeft <= 0) {
-                // built-in js fn. stops the interval timer
-                clearInterval(timer);
-
-                 // add alert sound here
-                alarmSound.play();
-                startButton.textContent = 'start';
-
-                // custom alert banner
-                const alertBanner = document.createElement('div');
-                alertBanner.textContent = 'you did it! ♫ヽ( •̀ᴗ•́)人(´∇｀๑)ノ♩♪';
-                alertBanner.style.position = 'fixed';
-                alertBanner.style.top = '20px';
-                alertBanner.style.left = '50%';
-                alertBanner.style.transform = 'translateX(-50%)';
-                alertBanner.style.backgroundColor = '#333';
-                alertBanner.style.color = '#fff';
-                alertBanner.style.padding = '10px 20px';
-                alertBanner.style.borderRadius = '5px';
-                alertBanner.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
-                document.body.appendChild(alertBanner);
-
-                // Remove banner after 7 seconds
-                setTimeout(() => {
-                    document.body.removeChild(alertBanner);
-                }, 7000);
-
-                startButton.textContent = 'start';
-
-                isRunning = false;
-                durationInput.disabled = false;
-                categoryInput.disabled = false;
-                logPomodoro(duration);
+                recordTime();
             }
         }, 1000);
     } else {
         pauseTimer();
     }
+}
+
+function recordTime() {
+    // built-in js fn. stops the interval timer
+    clearInterval(timer);
+
+    // add alert sound here
+   alarmSound.play();
+   startButton.textContent = 'start';
+
+   // custom alert banner
+   const alertBanner = document.createElement('div');
+   alertBanner.textContent = 'you did it! ♫ヽ( •̀ᴗ•́)人(´∇｀๑)ノ♩♪';
+   alertBanner.style.position = 'fixed';
+   alertBanner.style.top = '20px';
+   alertBanner.style.left = '50%';
+   alertBanner.style.transform = 'translateX(-50%)';
+   alertBanner.style.backgroundColor = '#333';
+   alertBanner.style.color = '#fff';
+   alertBanner.style.padding = '10px 20px';
+   alertBanner.style.borderRadius = '5px';
+   alertBanner.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
+   document.body.appendChild(alertBanner);
+
+   // Remove banner after 7 seconds
+   setTimeout(() => {
+       document.body.removeChild(alertBanner);
+   }, 7000);
+
+   startButton.textContent = 'start';
+
+   isRunning = false;
+   durationInput.disabled = false;
+   categoryInput.disabled = false;
+   
+   recordButton.style.display = 'none';
+
+   logPomodoro(duration);
 }
 
 function stopTimer() {
@@ -178,14 +186,14 @@ function pauseTimer() {
     clearInterval(timer);
     isRunning = false;
     startButton.textContent = 'start';
+    recordButton.style.display = 'none';
 }
 
 function logPomodoro(duration) {
     const endTime = new Date();
 
     console.log("end time:", endTime)
-
-    // format time. declare as const to 
+    
     const formatTime = (date) => {
         let hours = date.getHours();
         const mins = date.getMinutes();
@@ -200,16 +208,30 @@ function logPomodoro(duration) {
 
     cleanStart = formatTime(startTime);
     cleanEnd = formatTime(endTime);
+    
+    startTimeSeconds = startTime.getSeconds();
+    endTimeSeconds  = endTime.getSeconds()
+    durationElapsed = (endTimeSeconds - startTimeSeconds) / 60;
+    
+    
+    console.log("startTime: ", startTime)
+    console.log("endTime: ", endTime)
+    console.log("cleanStart: ", cleanStart)
+    console.log("cleanEnd: ", cleanEnd)
+    console.log("duration elapsed: ", durationElapsed)
+
     const timestamp = `${cleanStart} - ${cleanEnd}`;
     const category = categoryInput.value;
     
     const pomodoro = {
         category, 
         duration,
+        durationElapsed,
         timestamp
     };
     
     console.log("Logging pomodoro:", pomodoro);
+
     // storing pomodoro in the array
     pomodoroList.push(pomodoro);
     localStorage.setItem('pomodoroList', JSON.stringify(pomodoroList));
@@ -251,10 +273,9 @@ function updatePomodoroList() {
                 deletePomodoro(pomodoro.timestamp);
             }
         });
-
-        // Create a span for the text
+        
         const text = document.createElement('span');
-        text.textContent = `${pomodoro.timestamp} (${pomodoro.duration} mins): ${pomodoro.category}`;
+        text.textContent = `${pomodoro.timestamp} (${pomodoro.durationElapsed} mins): ${pomodoro.category}`;
 
         // Append checkbox and text to the list item
         listItem.appendChild(checkbox);
@@ -285,16 +306,16 @@ function navigateToStats() {
     }
 }
 
-const statsButton = document.getElementById("stats-button")
 statsButton.addEventListener("click", navigateToStats);
 
-// call startimer function
+// button event listeners
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
+recordButton.addEventListener('click', recordTime)
 
 updatePomodoroList();
 
-const setsCheckBox = document.getElementById("sets-checkbox");
+
 setsCheckBox.addEventListener('change', function () {
     if (!this.checked) {
         if (confirm("clear all past set entries?")) {

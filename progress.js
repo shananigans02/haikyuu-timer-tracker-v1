@@ -4,7 +4,6 @@
 const pomodoroList = JSON.parse(localStorage.getItem('pomodoroList')) || [];
 console.log("Pomo list in progress from local storage:", pomodoroList);
 
-
 // warning for stats pg while timer is running
 function navigateToTracker() {
         window.location.href = "index.html";
@@ -12,7 +11,6 @@ function navigateToTracker() {
 
 const trackerButton = document.getElementById("tracker-button")
 trackerButton.addEventListener("click", navigateToTracker);
-
 
 function generateProgressBars() {
     const progressContainer = document.getElementById('progress-bars');
@@ -24,7 +22,7 @@ function generateProgressBars() {
         if (!categoryMap.has(pomodoro.category)) {
             categoryMap.set(pomodoro.category, { totalDuration: 0, goalDuration: 0 });
         }
-        categoryMap.get(pomodoro.category).totalDuration += pomodoro.duration;
+        categoryMap.get(pomodoro.category).totalDuration += pomodoro.durationElapsed;
         if (pomodoro.goalDuration > categoryMap.get(pomodoro.category).goalDuration) {
             categoryMap.get(pomodoro.category).goalDuration = pomodoro.goalDuration;
         }
