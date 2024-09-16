@@ -7,6 +7,7 @@ let timeLeft = 0;
 let duration;
 let pomodoroList = JSON.parse(localStorage.getItem('pomodoroList')) || [];
 let startTime;
+let durationElapsed;
 
 // declare variables (can't be reassigned) 
 const timerDisplay = document.getElementById("timer-display");
@@ -209,16 +210,22 @@ function logPomodoro(duration) {
     cleanStart = formatTime(startTime);
     cleanEnd = formatTime(endTime);
     
-    startTimeSeconds = startTime.getSeconds();
-    endTimeSeconds  = endTime.getSeconds()
-    durationElapsed = (endTimeSeconds - startTimeSeconds) / 60;
-    
+    // calculate total time elapsed in seconds 
+    const elapsedMilliseconds = endTime - startTime;
+    const elapsedSeconds = Math.floor(elapsedMilliseconds / 1000);
+
+    // convert to minutes and seconds
+    const elapsedMinutes = Math.floor(elapsedSeconds / 60);
+    const remainingSeconds = elapsedSeconds % 60;
+
+    // formatting as mm:ss
+    const formattedElapsedTime = `${elapsedMinutes > 0? elapsedMinutes + ` mins`: ''} ${remainingSeconds > 0 ? remainingSeconds + ` secs` : ''}`
     
     console.log("startTime: ", startTime)
     console.log("endTime: ", endTime)
     console.log("cleanStart: ", cleanStart)
     console.log("cleanEnd: ", cleanEnd)
-    console.log("duration elapsed: ", durationElapsed)
+    console.log("duration elapsed: ", formattedElapsedTime)
 
     const timestamp = `${cleanStart} - ${cleanEnd}`;
     const category = categoryInput.value;
@@ -226,7 +233,7 @@ function logPomodoro(duration) {
     const pomodoro = {
         category, 
         duration,
-        durationElapsed,
+        formattedElapsedTime,
         timestamp
     };
     
@@ -275,7 +282,7 @@ function updatePomodoroList() {
         });
         
         const text = document.createElement('span');
-        text.textContent = `${pomodoro.timestamp} (${pomodoro.durationElapsed} mins): ${pomodoro.category}`;
+        text.textContent = `${pomodoro.timestamp} (${pomodoro.formattedElapsedTime}): ${pomodoro.category}`;
 
         // Append checkbox and text to the list item
         listItem.appendChild(checkbox);
