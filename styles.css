@@ -344,27 +344,45 @@ progress::-webkit-progress-value {
 }
 
 @media (max-width: 768px) {
-
     .container {
-        transform: scale(0.99);
-        transform-origin: top center; 
+        padding: 15px;
         width: 100%; 
+        margin: 0;
     }
-    
-    .input-button-container {
-        transform: scale(0.7); 
-        transform-origin: top center; 
+
+    .timer {
+        font-size: 5em; 
+    }
+
+    .input-wrapper, .button-wrapper {
+        flex-direction: column;
+        align-items: center;
         width: 100%;
     }
 
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    input, select {
+        width: 100%; /* Full width inputs on small devices */
+        margin-bottom: 10px;
+    }
+
+    .sets-wrapper {
+        width: 100%;
+        padding: 10px;
+    }
+
     nav {
-        transform: scale(0.99); 
-        transform-origin: top center; 
-        width: 100%; 
-        
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
     }
-        
-    .timer {
-        font-size: 6em;
+
+    .nav-link {
+        margin-bottom: 5px;
+        width: 100%;
     }
-} 
+}
