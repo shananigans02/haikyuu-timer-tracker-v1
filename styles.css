@@ -14,21 +14,9 @@ form {
     margin-bottom: 20px;
 }
 
-.input-wrapper {
-    display: flex;
-    align-items: center;
-    border: 1px solid white;
-    border-radius: 10px;
-    padding: 5px;
-    height: 24.5px; 
-}
-
 .button-wrapper {
     display: flex;
     margin-left: 0px;
-    /* width: 100%; */
-    /* box-sizing: border-box;
-    justify-content: space-between; */
 }
 
 .custom-dropdown {
@@ -106,6 +94,7 @@ nav {
     max-width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
+    width: auto;
 }
 
 .timer {
@@ -178,18 +167,66 @@ button {
     /* line-height: 1px; */
 }
 
-h2 {
-    margin-bottom: 0px;
+.set-container h2 {
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+.line-below-sets {
+    justify-content: center;
+    margin-left: 9px;
+    margin-bottom: 20px;
+    width: 370px;
+    height: 1px;
+    background-color: white;
+    margin-top: 1px;
+   
+    display: block;
 }
 
 #progress-bars h2 {
     margin-bottom: 30px;
 }
 
+.sets-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 15px 20px 15px;
+    width: 395px;
+    margin: 5px auto;
+    
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    height: 24.5px;
+}
+
 #pomodoro-list {
     list-style-type: none;
     padding: 0;
-    text-align: center;
+    text-align: left;
+    display: block;
+    max-width: 425px; /* Match the width to the input-wrapper and buttons */
+    margin: 0 auto;
+}
+
+
+.pomodoro-list-item {
+    display: flex;
+    align-items: flex-start;
+    margin: 2px 0;
+    padding: 0px; 
+    flex: 1 1 auto;
+    min-width: 340px;
+    flex-direction: row;
 }
 
 #pomodoro-list li {
@@ -249,24 +286,17 @@ progress::-webkit-progress-value {
     margin-top: 20px;
 }
 
-.pomodoro-list-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0;
-    padding: 0px; 
-}
-
 .input-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px 0;
+    margin: 20px 0;
     padding: 0px; 
+    width: 425px;
 }
 
 .pomodoro-checkbox {
-    margin: 0 6px 0 0;
+    margin: 0px 6px 0px 8px;
     padding: 0; 
     width: 18px;
     height: 18px;
@@ -277,6 +307,7 @@ progress::-webkit-progress-value {
     border-radius: 6px;
     cursor: pointer;
     position: relative;
+    flex-shrink: 0;
 }
 
 .pomodoro-checkbox:checked::before {
@@ -301,7 +332,10 @@ progress::-webkit-progress-value {
 .set-container {
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 #sets-checkbox {
@@ -333,6 +367,4 @@ progress::-webkit-progress-value {
     .timer {
         font-size: 6em;
     }
-    
-
 } 

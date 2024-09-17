@@ -219,7 +219,7 @@ function logPomodoro(duration) {
     const remainingSeconds = elapsedSeconds % 60;
 
     // formatting as mm:ss
-    const formattedElapsedTime = `${elapsedMinutes > 0? elapsedMinutes + ` mins`: ''} ${remainingSeconds > 0 ? remainingSeconds + ` secs` : ''}`
+    const formattedElapsedTime = `${elapsedMinutes > 0? elapsedMinutes + ` mins`: ''}${elapsedMinutes > 0 && remainingSeconds > 0 ? ' ': ''}${remainingSeconds > 0 ? remainingSeconds + ` secs` : ''}`
     
     console.log("startTime: ", startTime)
     console.log("endTime: ", endTime)
